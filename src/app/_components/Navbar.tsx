@@ -11,6 +11,7 @@ export default function Navbar() {
                     <a
                         href="https://mail.google.com/mail/?view=cm&fs=1&to=mridul20384@gmail.com&su=UCC Response&body=Test Email Body Content"
                         target="_blank"
+                        rel="noreferrer"
                         className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 hidden md:block"
                     >
                         Send Email
