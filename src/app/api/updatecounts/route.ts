@@ -1,10 +1,12 @@
+import dbConnect, { isDBConnected } from "@/lib/dbConnect";
+import { count } from "console";
 import { NextRequest, NextResponse } from "next/server";
 
 
 export async function POST(req: NextRequest) {
     const v = getQSParamFromURL("app_variant", req.url);
     const c = getQSParamFromURL("count", req.url);
-    const updated = increment(v || "", c || "");
+    const updated = await increment(v || "", c || "");
     return NextResponse.json(updated);
 }
 
@@ -18,34 +20,24 @@ function getQSParamFromURL(
   return urlParams.get(key);
 }
 
-function increment(app_variant: string, count_type: string) {
-    if (app_variant === "queertrans") {
-        if (count_type === "visits") {
-            const current_visits = +(process.env.VISIT_COUNT_QT || 0);
-            process.env.VISIT_COUNT_QT = (current_visits + 1).toString();
-        } else if (count_type === "emails") {
-            const current_emails = +(process.env.EMAIL_COUNT_QT || 0);
-            process.env.EMAIL_COUNT_QT = (current_emails + 1).toString();
-        }
-        return {
-            visits: process.env.VISIT_COUNT_QT,
-            emails: process.env.EMAIL_COUNT_QT,
-        }
-    } else if (app_variant === "feminists") {
-        if (count_type === "visits") {
-            const current_visits = +(process.env.VISIT_COUNT_FEM || 0);
-            process.env.VISIT_COUNT_FEM = (current_visits + 1).toString();
-        } else if (count_type === "emails") {
-            const current_emails = +(process.env.EMAIL_COUNT_FEM || 0);
-            process.env.EMAIL_COUNT_FEM = (current_emails + 1).toString();
-        }
-        return {
-            visits: process.env.VISIT_COUNT_FEM,
-            emails: process.env.EMAIL_COUNT_FEM,
-        }
+async function increment(app_variant: string, count_type: string) {
+    const db = await _initdb();
+    if (!db) {
+        return {count: 0}
     }
-    return {
-        visits: 0,
-        emails: 0,
+    const collection = db.collection(count_type);
+    const result = await collection.insertOne({ app_variant: app_variant, timestamp: new Date() });
+    const count = await collection.countDocuments({ app_variant: app_variant });
+    return { count: count };
+}
+
+async function _initdb() {
+    const connection = await dbConnect();
+  if (connection) {
+    const { db } = connection;
+
+    if (isDBConnected()) {
+      return db;
     }
+  }
 }

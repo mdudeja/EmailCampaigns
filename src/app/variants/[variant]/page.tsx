@@ -94,7 +94,7 @@ export default function Variant({params}: {params: {variant: string}}) {
             <main>
                 <div className="relative">
                     <p 
-                        className="text-right px-4 absolute w-full z-20 cursor-pointer text-blue-600 dark:text-blue-300 underline underline-offset-4 hidden lg:block"
+                        className="text-right px-4 absolute w-full z-20 cursor-pointer text-blue-900 dark:text-blue-300 underline underline-offset-4 hidden lg:block bg-white dark:bg-transparent"
                         onClick={() => {
                             setModalOpen(true)
                         }}
@@ -102,7 +102,7 @@ export default function Variant({params}: {params: {variant: string}}) {
                         IMP: Instructions on how to use this app
                     </p>
                     <p 
-                        className="text-right px-4 absolute w-full z-20 cursor-pointer text-blue-600 dark:text-blue-300 underline underline-offset-4 lg:hidden"
+                        className="text-right px-4 absolute w-full z-20 cursor-pointer text-blue-100 dark:text-blue-300 underline underline-offset-4 lg:hidden"
                         onClick={() => {
                             setModalOpen(true)
                         }}
@@ -122,7 +122,7 @@ export default function Variant({params}: {params: {variant: string}}) {
                                 </a>
                             </p>
                         </div>
-                        <div className="px-4 py-2 mx-4 my-auto md:mx-auto md:my-4 border rounded-md md:border-none bg-white dark:bg-black z-10 overflow-y-auto h-5/6 md:h-full">
+                        <div className="px-4 py-2 mx-4 my-12 md:mx-auto md:my-4 border rounded-md md:border-none bg-white dark:bg-black z-10 overflow-y-auto h-5/6 md:h-full">
                             {[...contentToLoad]}
                         </div>
                     </div>

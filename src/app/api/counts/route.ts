@@ -1,9 +1,11 @@
+import dbConnect, { isDBConnected } from "@/lib/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
 
 
 export async function GET(req: NextRequest) {
     const v = getQSParamFromURL("app_variant", req.url);
-    const counts = fetchCounts(v || "");
+    const counts = await fetchCounts(v || "");
+    console.log(counts)
     return NextResponse.json(counts);
 }
 
@@ -17,22 +19,28 @@ function getQSParamFromURL(
   return urlParams.get(key);
 }
 
-function fetchCounts(app_variant: string) {
-    if (app_variant === "queertrans") {
-        return {
-            visits: process.env.VISIT_COUNT_QT,
-            emails: process.env.EMAIL_COUNT_QT,
-        }
-    } else if (app_variant === "feminists") {
-        return {
-            visits: process.env.VISIT_COUNT_FEM,
-            emails: process.env.EMAIL_COUNT_FEM,
-        }
-    }
+async function _initdb() {
+    const connection = await dbConnect();
+  if (connection) {
+    const { db } = connection;
 
-    return {
-        visits: 0,
-        emails: 0,
+    if (isDBConnected()) {
+      return db;
     }
+  }
+}
 
+async function fetchCounts(app_variant: string) {
+    const db = await _initdb();
+    if (!db) {
+        return null;
+    }
+    
+    const collection_visits = db.collection("visits");
+    const collection_emails = db.collection("emails");
+
+    const count_visits = await collection_visits.countDocuments({ app_variant: app_variant });
+    const count_emails = await collection_emails.countDocuments({ app_variant: app_variant });
+
+    return { visits: count_visits, emails: count_emails };
 }

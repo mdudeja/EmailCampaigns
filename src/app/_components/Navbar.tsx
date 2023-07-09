@@ -11,10 +11,7 @@ export default function Navbar({url, app_variant}: {url: string, app_variant: st
         })
             .then((res) => res.json())
             .then((data) => {
-                setCounts({
-                    visits: parseInt(data.visits),
-                    emails: parseInt(data.emails),
-                })
+                
             })
     }
 
@@ -24,10 +21,7 @@ export default function Navbar({url, app_variant}: {url: string, app_variant: st
         })
             .then((res) => res.json())
             .then((data) => {
-                setCounts({
-                    visits: parseInt(data.visits),
-                    emails: parseInt(data.emails),
-                })
+               
             })
     }
 
@@ -35,11 +29,12 @@ export default function Navbar({url, app_variant}: {url: string, app_variant: st
         fetch(`/api/counts?app_variant=${app_variant}`)
             .then((res) => res.json())
             .then((data) => {
+                console.log(data)
                 setCounts({
                     visits: parseInt(data.visits),
                     emails: parseInt(data.emails),
                 })
-                updateVisits()
+                setTimeout(updateVisits, 1000)
             })
     }, [])
 
