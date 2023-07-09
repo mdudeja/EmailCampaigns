@@ -1,0 +1,4 @@
+{
+    "autoimport.filesToScan": "src/**/*.{ts,tsx}",
+    "autoimport.useSemiColon": false
+}

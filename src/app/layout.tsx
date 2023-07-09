@@ -18,8 +18,7 @@ export default function RootLayout({
     return (
         <html lang="en" className="mx-auto overflow-x-hidden">
             <body className={inter.className}>
-                <Navbar />
-                <main>{children}</main>
+                {children}
             </body>
         </html>
     )
