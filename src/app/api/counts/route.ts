@@ -1,8 +1,7 @@
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: NextRequest) {
     const v = getQSParamFromURL("app_variant", req.url);
     const counts = fetchCounts(v || "");
     return NextResponse.json(counts);
