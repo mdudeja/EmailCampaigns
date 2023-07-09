@@ -46,11 +46,11 @@ export default function Navbar({url, app_variant}: {url: string, app_variant: st
     return (
         <nav className="bg-white dark:bg-gray-900 border-gray-200">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 h-20">
-                <div className="flex flex-col items-start w-3/5">
+                <div className="flex flex-col items-start w-4/6">
                     <span className="text-md md:text-2xl font-semibold whitespace-nowrap dark:text-white overflow-hidden text-ellipsis">
                         Respond to Law Commission
                     </span>
-                    <span>
+                    <span className="text-xs md:text-base">
                         <span>Total Visits: {counts.visits} |</span>
                         <span> Total Emails: {counts.emails}</span>
                     </span>

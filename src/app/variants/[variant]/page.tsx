@@ -16,10 +16,19 @@ export default function Variant({params}: {params: {variant: string}}) {
     const isOnDesktop = useMediaQuery("lg")
 
 
-    function generateNode(type: 'p' | 'h1' , content: string, key?: number): ReactNode {
+    function generateNode(type: 'p' | 'h1' , content: string, key?: number, italicise?: boolean): ReactNode {
         switch (type) {
             case 'p':
+                if (content.startsWith('~~')) {
+                    return <p className="mt-6 pr-2" key={key}>{content.substring(2)}</p>    
+                }
+
+                if (italicise) {
+                    return <p className="mt-2 pr-2 italic" key={key}>{content}</p>
+                }
+
                 return <p className="mt-2 pr-2" key={key}>{content}</p>
+
             case 'h1':
                 return <h1>{content}</h1>
         }
@@ -36,7 +45,10 @@ export default function Variant({params}: {params: {variant: string}}) {
 
             const tags: ReactNode[] = []
 
-            tags.push(generateNode('p', (toLoad as unknown as IVariantContent).intro, tags.length))
+            ;(toLoad as unknown as IVariantContent).intro.forEach((item: string) => {
+                tags.push(generateNode('p', item, tags.length, true))
+            })
+            tags.push(<p className="pr-2 border bottom-1 border-dashed mt-2" />)
             ;(toLoad as unknown as IVariantContent).body.forEach((item) => {
                 tags.push(generateNode('p', item, tags.length))
             })
@@ -55,7 +67,7 @@ export default function Variant({params}: {params: {variant: string}}) {
         }
 
         const subject = encodeURIComponent((toLoad as unknown as IVariantContent).subject)
-        const body = encodeURIComponent((toLoad as unknown as IVariantContent).body.join('\n\n'))
+        const body = encodeURIComponent((toLoad as unknown as IVariantContent).body.map((item) => item.replace(/~~/g, '\n')).join('\n\n'))
         const to = encodeURIComponent(get(Content, `common.email_id`, ""))
 
         if (isOnDesktop) {
@@ -69,10 +81,10 @@ export default function Variant({params}: {params: {variant: string}}) {
     useEffect(() => {
         setVariant(params.variant)
         const acceptableVariants = (process.env.NEXT_PUBLIC_VARIANTS || "").split(',')
-        // if (variant && !acceptableVariants.includes(variant)) {
-        //     router.push('/404')
-        //     return
-        // }
+        if (variant && !acceptableVariants.includes(variant)) {
+            router.push('/404')
+            return
+        }
         populateContent()
     }, [variant, router])
 

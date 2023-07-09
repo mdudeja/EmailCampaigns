@@ -18,6 +18,9 @@ export default function InstructionsModal({
     function generateNode(type: 'p' | 'h1' , content: string, key?: number): ReactNode {
         switch (type) {
             case 'p':
+                if (content.startsWith('~~')) {
+                    return <p className="my-4 pr-2 p-2 border border-1 border-dashed" key={key}>{content.substring(2)}</p>
+                }
                 return <p className="mt-2 pr-2" key={key}>{content}</p>
             case 'h1':
                 return <h1>{content}</h1>

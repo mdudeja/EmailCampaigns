@@ -6,7 +6,7 @@ import Navbar from './_components/Navbar'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-    title: 'Email Campaigns App',
+    title: 'Response to 22nd Law Commission',
     description: 'About UCC Recommendations',
 }
 
