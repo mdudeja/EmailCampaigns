@@ -71,10 +71,7 @@ export default function VariantPage({
 
             case 'ol':
                 return (
-                    <ol
-                        className="mt-2 list-inside list-decimal pr-2"
-                        key={key}
-                    >
+                    <ul className="mt-2 list-inside list-disc" key={key}>
                         {(content as string[]).map((item, index) => {
                             return (
                                 <li
@@ -86,7 +83,7 @@ export default function VariantPage({
                                 ></li>
                             )
                         })}
-                    </ol>
+                    </ul>
                 )
 
             case 'h1':
@@ -119,7 +116,9 @@ export default function VariantPage({
                     tags.push(generateNode('p', item, tags.length, true))
                 }
             )
-            tags.push(<p className="bottom-1 mt-2 border border-dashed pr-2" />)
+            tags.push(
+                <p className="bottom-1 mb-4 mt-4 border border-dashed pr-2" />
+            )
             ;(toLoad as unknown as IVariantContent).body.forEach((item) => {
                 if (isArray(item)) {
                     tags.push(generateNode('ol', item, tags.length))
