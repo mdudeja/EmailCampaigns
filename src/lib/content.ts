@@ -136,7 +136,7 @@ const Content = {
                 '##As the 21st Law Commission rightly stated,$$ “The issue of family law reform does not need to be approached as a policy that is against the religious sensibilities of individuals but simply as one promoting harmony between religion and constitutionalism, in a way that no citizen is left disadvantaged on account of their religion and at the same time every citizen’s right to freedom of religion is equally protected.”',
                 'Given the deep polarisation on the issue and the systematic targeting of specific communities, the onus is on the LCI to create an atmosphere conducive to reasonable dialogue and consultations with a wide spectrum of all those who will be most impacted by any such legal amendments. ##Without that, women and other vulnerable stakeholders in whose name this exercise is purportedly being conducted, will be silenced and invisibilised yet again and the entire exercise will simply serve some vested political interests.$$',
                 'Sd/-',
-                'A concerned Individual',
+                'A concerned individual',
             ],
             email_body: [
                 'To',
@@ -163,7 +163,7 @@ const Content = {
                 'In conclusion, we frame guiding principles that must govern all efforts towards gender justice and equality.',
                 'Please find the complete text of the submission at this link: https://responseto22ndlawcommission.vercel.app/ucc.pdf',
                 '~~Sd/-',
-                'A concerned Individual',
+                'A concerned individual',
             ],
         },
     },
