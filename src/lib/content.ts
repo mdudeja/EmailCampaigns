@@ -29,7 +29,7 @@ const Content = {
             'When you click the Send Email button, the letter will be copied into your Gmail Compose with the email address of the Law Commission already filled in. All you have to do is click send.',
         ],
         all: [
-            'The default sign off is “a concerned citizen.” If you would like to edit this to reflect your name and the organisation you belong to, feel free to edit this within your email app before hitting send!',
+            'The default sign off is “a concerned individual.” If you would like to edit this to reflect your name and the organisation you belong to, feel free to edit this within your email app before hitting send!',
             "If it doesn't work, please copy the letter and send it to membersecretary-lci@gov.in",
             "~~PS: We don't collect any information about who is using this app. Once you click on the Send Email button, the email goes directly from your account to the Law Commission. We don't get to know your Email Address or Name or anything else.",
         ],
