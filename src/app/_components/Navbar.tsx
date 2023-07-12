@@ -1,18 +1,25 @@
 'use client'
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
-export default function Navbar({url, app_variant}: {url: string, app_variant: string}) {
-    const [counts, setCounts] = useState<{[key: string]: number}>({visits: 0, emails: 0})
+export default function Navbar({
+    url,
+    app_variant,
+}: {
+    url: string
+    app_variant: string
+}) {
+    const [counts, setCounts] = useState<{ [key: string]: number }>({
+        visits: 0,
+        emails: 0,
+    })
 
     function updateVisits() {
         fetch(`/api/updatecounts?app_variant=${app_variant}&count=visits`, {
             method: 'POST',
         })
             .then((res) => res.json())
-            .then((data) => {
-                
-            })
+            .then((data) => {})
     }
 
     function updateEmails() {
@@ -20,16 +27,13 @@ export default function Navbar({url, app_variant}: {url: string, app_variant: st
             method: 'POST',
         })
             .then((res) => res.json())
-            .then((data) => {
-               
-            })
+            .then((data) => {})
     }
 
     useEffect(() => {
         fetch(`/api/counts?app_variant=${app_variant}`)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setCounts({
                     visits: parseInt(data.visits),
                     emails: parseInt(data.emails),
@@ -39,10 +43,10 @@ export default function Navbar({url, app_variant}: {url: string, app_variant: st
     }, [])
 
     return (
-        <nav className="bg-white dark:bg-gray-900 border-gray-200">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 h-20">
-                <div className="flex flex-col items-start w-4/6">
-                    <span className="text-md md:text-2xl font-semibold whitespace-nowrap dark:text-white overflow-hidden text-ellipsis">
+        <nav className="border-gray-200 bg-white dark:bg-gray-900">
+            <div className="mx-auto flex h-20 max-w-screen-xl flex-wrap items-center justify-between p-4">
+                <div className="flex w-4/6 flex-col items-start">
+                    <span className="text-md overflow-hidden text-ellipsis whitespace-nowrap font-semibold dark:text-white md:text-2xl">
                         Respond to Law Commission
                     </span>
                     <span className="text-xs md:text-base">
@@ -55,7 +59,7 @@ export default function Navbar({url, app_variant}: {url: string, app_variant: st
                         href={url}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        className="mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
                         onClick={updateEmails}
                     >
                         Send Email
