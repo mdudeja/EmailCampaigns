@@ -14,6 +14,15 @@ export async function generateMetadata({
             icons: {
                 icon: '/feminists_icon.ico',
             },
+            openGraph: {
+                images: [
+                    {
+                        url: '/feminists_icon.jpg',
+                        width: 200,
+                        height: 204,
+                    },
+                ],
+            },
         }
     }
 
