@@ -11,7 +11,9 @@ export async function generateMetadata({
         return {
             title: 'Feminists Response to 22nd Law Commission',
             description: 'About UCC Recommendations',
-            icon: '/feminists_icon.ico',
+            icons: {
+                icon: '/feminists_icon.ico',
+            },
         }
     }
 
