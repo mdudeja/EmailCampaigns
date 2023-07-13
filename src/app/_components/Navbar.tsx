@@ -43,7 +43,7 @@ export default function Navbar({
     }, [])
 
     return (
-        <nav className="border-gray-200 bg-white dark:bg-gray-900">
+        <nav className="sticky top-0 z-20 border-gray-200 bg-white dark:bg-gray-900">
             <div className="mx-auto flex h-20 max-w-screen-xl flex-wrap items-center justify-between p-4">
                 <div className="flex w-4/6 flex-col items-start">
                     <span className="text-md overflow-hidden text-ellipsis whitespace-nowrap font-semibold dark:text-white md:text-2xl">

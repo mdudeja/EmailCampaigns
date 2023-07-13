@@ -76,8 +76,7 @@ const Content = {
                 'Please see a draft of the email prepared and send an email to the Law Commission. If you agree with this, please send an email with any changes that you may want to make.',
                 '~~##Feminist Working Group on Law Commission submission on the UCC.$$',
             ],
-            subject:
-                'Response of feminist, queer and women’s rights groups on the Uniform Civil Code (UCC).',
+            subject: 'Feminist response to the proposed UCC',
             body: [
                 'To',
                 'The Hon’ble Chairperson and members ',

@@ -251,7 +251,7 @@ export default function VariantPage({
                                 }}
                             ></div>
                         )}
-                        <div className="z-10 mx-4 my-12 h-5/6 overflow-y-auto rounded-md border bg-white px-4 py-2 dark:bg-black md:mx-auto md:my-4 md:h-full md:border-none">
+                        <div className="z-10 mx-auto my-12 w-11/12 rounded-md border bg-white px-4 py-2 dark:bg-black md:mx-auto md:my-4 md:h-full md:border-none">
                             {[...contentToLoad]}
                         </div>
                     </div>
